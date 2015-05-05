@@ -6,7 +6,7 @@ License:	LGPLv2.1+
 Group:		Graphical desktop/KDE
 Url:		https://www.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/stable/plasma/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:	extra-cmake-modules
+BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Gui)
@@ -24,59 +24,55 @@ KDE Frameworks 5 Bluetooth module. It provides Qt wrapper for Bluez 5 DBus API.
 
 #----------------------------------------------------------------------------
 
-%define qmlkf5bluezqt %mklibname kf5bluezqt-qml
+%define qmlKF5BluezQt %mklibname KF5BluezQt-qml
 
-%package -n %{qmlkf5bluezqt}
+%package -n %{qmlKF5BluezQt}
 Summary:	QML plugin for KDE Frameworks 5 Bluetooth module
 Group:		System/Libraries
-Provides:	kf5bluezqt-qml = %{EVRD}
+Provides:	KF5BluezQt-qml = %{EVRD}
 
-%description -n %{qmlkf5bluezqt}
+%description -n %{qmlKF5BluezQt}
 QML plugin for KDE Frameworks 5 Bluetooth module.
 
-%files -n %{qmlkf5bluezqt}
-%dir %{_kde5_qmldir}/org/kde/bluezqt/
-%{_kde5_qmldir}/org/kde/bluezqt/*
+%files -n %{qmlKF5BluezQt}
 
 #----------------------------------------------------------------------------
 
-%define kf5bluezqt_major 5
-%define libkf5bluezqt %mklibname kf5bluezqt %{kf5bluezqt_major}
+%define libKF5BluezQt_major 5
+%define libKF5BluezQt %mklibname libKF5BluezQt %{libKF5BluezQt_major}
 
-%package -n %{libkf5bluezqt}
+%package -n %{libKF5BluezQt}
 Summary:	KDE Frameworks 5 Bluetooth module shared library
 Group:		System/Libraries
-Requires:	%{name}
-Requires:	%{qmlkf5bluezqt}
+Requires:	%{name} = %{EVRD}
+Requires:	%{qmlKF5BluezQt} = %{EVRD}
 
-%description -n %{libkf5bluezqt}
+%description -n %{libKF5BluezQt}
 KDE Frameworks 5 Bluetooth module shared library.
 
-%files -n %{libkf5bluezqt}
-%{_kde5_libdir}/libKF5BluezQt.so.%{kf5bluezqt_major}
-%{_kde5_libdir}/libKF5BluezQt.so.%{version}
+%files -n %{libKF5BluezQt}
+%{_libdir}/libKF5BluezQt.so.%{libKF5BluezQt_major}
+%{_libdir}/libKF5BluezQt.so.%{version}
 
 #----------------------------------------------------------------------------
 
-%define devkf5bluezqt %mklibname kf5bluezqt -d
+%define devKF5BluezQt %mklibname KF5BluezQt -d
 
-%package -n %{devkf5bluezqt}
+%package -n %{devKF5BluezQt}
 Summary:	Development files for KDE Frameworks 5 Bluetooth module
 Group:		Development/KDE and Qt
-Requires:	%{libkf5bluezqt} = %{EVRD}
+Requires:	%{libKF5BluezQt} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
-Provides:	kf5bluezqt-devel = %{version}
 
-%description -n %{devkf5bluezqt}
+%description -n %{devKF5BluezQt}
 This package contains header files needed if you wish to build applications
 based on %{name}.
 
-%files -n %{devkf5bluezqt}
-%{_kde5_includedir}/KF5/BluezQt
-%{_kde5_includedir}/KF5/bluezqt_version.h
-%{_kde5_libdir}/cmake/KF5BluezQt
-%{_kde5_libdir}/libKF5BluezQt.so
-%{_kde5_mkspecsdir}/*.pri
+%files -n %{devKF5BluezQt}
+%{_includedir}/KF5/BluezQt
+%{_includedir}/KF5/bluezqt_version.h
+%{_libdir}/cmake/KF5BluezQt
+%{_libdir}/libKF5BluezQt.so
 
 #----------------------------------------------------------------------------
 
@@ -85,8 +81,8 @@ based on %{name}.
 
 %build
 %cmake_kde5
-%make
+%ninja -C build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
