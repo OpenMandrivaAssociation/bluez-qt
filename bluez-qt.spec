@@ -35,6 +35,9 @@ Provides:	KF5BluezQt-qml = %{EVRD}
 QML plugin for KDE Frameworks 5 Bluetooth module.
 
 %files -n %{qmlKF5BluezQt}
+%dir %{_libdir}/qt5/qml/org/kde/bluezqt
+%{_libdir}/qt5/qml/org/kde/bluezqt/libbluezqtextensionplugin.so
+%{_libdir}/qt5/qml/org/kde/bluezqt/qmldir
 
 #----------------------------------------------------------------------------
 
@@ -73,6 +76,7 @@ based on %{name}.
 %{_includedir}/KF5/bluezqt_version.h
 %{_libdir}/cmake/KF5BluezQt
 %{_libdir}/libKF5BluezQt.so
+%{_libdir}/qt5/mkspecs/modules/qt_BluezQt.pri
 
 #----------------------------------------------------------------------------
 
