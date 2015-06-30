@@ -49,12 +49,14 @@ Summary:	KDE Frameworks 5 Bluetooth module shared library
 Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
 Requires:	%{qmlKF5BluezQt} = %{EVRD}
+Obsoletes:	%{mklibname libKF5BluezQt 5}
 
 %description -n %{libKF5BluezQt}
 KDE Frameworks 5 Bluetooth module shared library.
 
 %files -n %{libKF5BluezQt}
-%{_libdir}/libKF5BluezQt.so.%{libKF5BluezQt_major}*
+%{_libdir}/libKF5BluezQt.so.%{libKF5BluezQt_major}
+%{_libdir}/libKF5BluezQt.so.%{version}
 
 #----------------------------------------------------------------------------
 
