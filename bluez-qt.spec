@@ -38,6 +38,7 @@ QML plugin for KDE Frameworks 5 Bluetooth module.
 %dir %{_libdir}/qt5/qml/org/kde/bluezqt
 %{_libdir}/qt5/qml/org/kde/bluezqt/libbluezqtextensionplugin.so
 %{_libdir}/qt5/qml/org/kde/bluezqt/qmldir
+%{_libdir}/qt5/qml/org/kde/bluezqt/DevicesModel.qml
 
 #----------------------------------------------------------------------------
 
