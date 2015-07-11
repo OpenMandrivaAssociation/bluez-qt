@@ -1,6 +1,6 @@
 Summary:	KDE Frameworks 5 Bluetooth module
 Name:		bluez-qt
-Version:	5.11.0
+Version:	5.12.0
 Release:	1
 License:	LGPLv2.1+
 Group:		Graphical desktop/KDE
