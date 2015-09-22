@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   bluez-qt-5.13.0.tar.xz: 736af3076b2b6cb9c8dc13fc91eceb96bdbfb692
+sources:
+  bluez-qt-5.14.0.tar.xz: 7f4a25e758ec8e1ea5d6025fb8799953ddcd9dab
