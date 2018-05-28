@@ -17,6 +17,8 @@ BuildRequires:	pkgconfig(Qt5Qml)
 BuildRequires:	pkgconfig(Qt5QuickTest)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5Widgets)
+# For _udevrulesdir macro
+BuildRequires:	systemd
 
 %description
 KDE Frameworks 5 Bluetooth module. It provides Qt wrapper for Bluez 5 DBus API.
