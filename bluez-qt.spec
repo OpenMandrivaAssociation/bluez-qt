@@ -17,6 +17,7 @@ BuildRequires:	pkgconfig(Qt5Qml)
 BuildRequires:	pkgconfig(Qt5QuickTest)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	doxygen
 # For _udevrulesdir macro
 BuildRequires:	systemd
 
