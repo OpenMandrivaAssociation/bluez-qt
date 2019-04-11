@@ -17,6 +17,8 @@ BuildRequires:	pkgconfig(Qt5Qml)
 BuildRequires:	pkgconfig(Qt5QuickTest)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5Widgets)
+# For building QCH docs
+BuildRequires: qt5-assistant
 BuildRequires:	doxygen
 # For _udevrulesdir macro
 BuildRequires:	systemd
@@ -88,6 +90,17 @@ based on %{name}.
 %{_libdir}/qt5/mkspecs/modules/qt_BluezQt.pri
 
 #----------------------------------------------------------------------------
+%package -n %{name}-devel-docs
+Summary: Developer documentation for %{name} for use with Qt Assistant
+Group: Documentation
+Suggests: %{devKF5BluezQt} = %{EVRD}
+
+%description -n %{name}-devel-docs
+Developer documentation for %{name} for use with Qt Assistant
+
+%files -n %{name}-devel-docs
+%{_docdir}/qt5/*.{tags,qch}
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -98,4 +111,3 @@ based on %{name}.
 
 %install
 %ninja_install -C build
-
