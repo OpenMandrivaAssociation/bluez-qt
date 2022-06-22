@@ -3,7 +3,7 @@
 Summary:	KDE Frameworks 5 Bluetooth module
 Name:		bluez-qt
 Version:	5.95.0
-Release:	1
+Release:	2
 License:	LGPLv2.1+
 Group:		Graphical desktop/KDE
 Url:		https://www.kde.org/
@@ -27,9 +27,8 @@ BuildRequires:	systemd
 KDE Frameworks 5 Bluetooth module. It provides Qt wrapper for Bluez 5 DBus API.
 
 %files
-%{_udevrulesdir}/61-kde-bluetooth-rfkill.rules
-%{_datadir}/qlogging-categories5/bluezqt.categories
-%{_datadir}/qlogging-categories5/bluezqt.renamecategories
+%{_udevrulesdir}/*.rules
+%{_datadir}/qlogging-categories5/bluezqt.*
 
 #----------------------------------------------------------------------------
 
@@ -92,20 +91,21 @@ based on %{name}.
 
 #----------------------------------------------------------------------------
 %package -n %{name}-devel-docs
-Summary: Developer documentation for %{name} for use with Qt Assistant
-Group: Documentation
-Suggests: %{devKF5BluezQt} = %{EVRD}
+Summary:	Developer documentation for %{name} for use with Qt Assistant
+Group:		Documentation
+Suggests:	%{devKF5BluezQt} = %{EVRD}
 
 %description -n %{name}-devel-docs
-Developer documentation for %{name} for use with Qt Assistant
+Developer documentation for %{name} for use with Qt Assistant.
 
 %files -n %{name}-devel-docs
 %{_docdir}/qt5/*.{tags,qch}
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
-%cmake_kde5
+%autosetup -p1
+%cmake_kde5 \
+	-DUDEV_RULES_INSTALL_DIR:PATH="%{_udevrulesdir}"
 
 %build
 %ninja -C build
